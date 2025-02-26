@@ -1,0 +1,97 @@
+/* تنسيق القسم بأكمله */
+.featured-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+  }
+  
+  /* تنسيق الأقسام الرئيسية */
+  .featured-item {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .featured-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+
+  
+  .featured-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+  }
+  
+  .featured-content h3 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .featured-content p {
+    font-size: 1.2rem;
+  }
+  
+  .featured-content .btn {
+    margin-top: 10px;
+  }
+  
+  /* تنسيق قسم الخدمات */
+  .services-section {
+    padding: 50px 0;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .service-item {
+    padding: 20px;
+  }
+  
+  .service-icon {
+    font-size: 2rem;
+    color: #DB4444;
+    margin-bottom: 10px;
+  }
+  
+  .service-item h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .service-item p {
+    font-size: 1rem;
+    color: #666;
+  }
+  .scroll-top-button{
+    color: crimson;
+    
+  }
+  .scroll-top-button {
+    position: fixed !important; /* يثبت الزر في مكانه */
+    bottom: 20px !important; /* المسافة من الأسفل */
+    right: 20px!important; /* المسافة من اليمين */
+    z-index: 1000!important; /* يضمن ظهور الزر فوق العناصر الأخرى */
+    background-color: crimson!important; /* لون الخلفية */
+    color: white!important; /* لون النص/الأيقونة */
+    border: none!important; /* إزالة الحدود */
+    border-radius: 50%!important; /* يجعل الزر دائريًا */
+    width: 50px!important; /* عرض الزر */
+    height: 50px!important; /* ارتفاع الزر */
+    display: flex!important; /* لتوسيط الأيقونة */
+    align-items: center!important; /* توسيط عمودي */
+    justify-content: center!important; /* توسيط أفقي */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)!important; /* إضافة ظل */
+    transition: background-color 0.3s ease !important; /* تأثير انتقالي عند التمرير */
+  }
+  
+  .scroll-top-button:hover {
+    background-color: #101821; /* تغيير لون الخلفية عند التمرير */
+  }
+  
+  .scroll-top-button:active {
+    background-color: #004080; /* تغيير لون الخلفية عند النقر */
+  }

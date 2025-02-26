@@ -1,0 +1,61 @@
+.why-choose-us {
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  padding: 50px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.why-image {
+  max-width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.why-image:hover {
+  transform: scale(1.05);
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #ff4d4f;
+  text-transform: uppercase;
+  border-left: 5px solid #ff4d4f;
+  padding-left: 15px;
+}
+
+.section-description {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+}
+
+.benefits-list li {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.benefits-list li span {
+  font-size: 1.5rem;
+  color: #ff4d4f;
+  margin-right: 10px;
+}
+
+.benefits-list li:hover {
+  color: #ff4d4f;
+  transform: translateX(5px);
+}

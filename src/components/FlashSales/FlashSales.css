@@ -1,0 +1,126 @@
+/* الألوان الأساسية */
+:root {
+    --primary-color: #007bff; /* لون الأزرار */
+    --hover-color: #0056b3; /* لون الأزرار عند الـ Hover */
+    --text-color: white; /* لون النص على الأزرار */
+    --discounted-color: #dc3545; /* لون السعر المخفض */
+    --original-color: #6c757d; /* لون السعر الأصلي */
+  }
+  
+  /* عنوان القسم مع التايمر */
+  .section-header {
+    display: flex;
+    align-items: center; /* محاذاة العناصر عمودياً */
+    justify-content: flex-start; /* محاذاة العناصر لليسار */
+    margin-bottom: 20px;
+  }
+  
+  .flash-sales-text {
+    color: var(--discounted-color); /* لون أحمر */
+    font-style: italic; /* مائل */
+    text-transform: uppercase; /* أحرف كبيرة */
+    font-size: 1.2rem; /* حجم صغير */
+    margin-right: 10px; /* مسافة بين "Today's" و "Flash Sales" */
+  }
+  
+  .today-text {
+    font-size: 1rem; /* حجم كبير */
+    font-weight: bold; /* نص غامق */
+    color: #333; /* لون النص */
+    margin-right: 10px; /* مسافة بين "Flash Sales" والتايمر */
+  }
+  
+  .countdown-timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #dc3545; /* لون التايمر */
+  }
+  
+  /* بطاقات المنتجات */
+  .product-slide {
+    padding: 0 10px; /* مسافة بين البطاقات */
+  }
+  
+  .product-slide .card {
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 500px; /* ارتفاع ثابت للبطاقات */
+  }
+  
+  .product-slide .card:hover {
+    transform: scale(1.05); /* تكبير البطاقة عند الـ Hover */
+  }
+  
+  /* حاوية الصورة */
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 300px; /* ارتفاع الصورة */
+    overflow: hidden; /* إخفاء الجزء الزائد من الصورة */
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* تغطية المساحة */
+    object-position: center top; /* ظهور الجزء العلوي من الصورة */
+  }
+  
+  /* بوكس نسبة الخصم */
+  .discount-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--discounted-color); /* لون الخلفية */
+    color: var(--text-color); /* لون النص */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  
+  .product-slide .card-body {
+    text-align: center;
+  }
+  
+  .product-slide .card-title {
+    font-size: 1.2rem; /* حجم العنوان */
+    margin-bottom: 10px;
+  }
+  
+  .product-slide .card-text {
+    font-size: 1rem; /* حجم النص */
+  }
+  
+  .text-danger {
+    color: var(--discounted-color); /* لون السعر المخفض */
+  }
+  
+  /* زر Add To Cart */
+  .custom-button {
+    background-color: #db4444 !important;
+    margin-top: 5px;
+    color: #f8fcff !important;
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 16px !important;
+    transition: background-color 0.3s ease !important;
+  }
+  
+  .custom-button:hover {
+    background-color: #e07575 !important;
+  }
+  
+  /* تعديلات السلايدر */
+  .slick-prev:before,
+  .slick-next:before {
+    color: var(--primary-color); /* لون أسهم التنقل */
+  }
+  
+  .slick-dots li button:before {
+    color: var(--primary-color); /* لون نقاط التنقل */
+  }

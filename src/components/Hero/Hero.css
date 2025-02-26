@@ -1,0 +1,85 @@
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    background-color: #f5f5f5; /* Adjust based on your Figma design */
+  }
+  
+  .hero-content {
+    max-width: 50%;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    color: #333; /* Adjust based on Figma */
+    margin-bottom: 1rem;
+  }
+  
+  .hero-content p {
+    font-size: 1.2rem;
+    color: #666; /* Adjust based on Figma */
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    background-color: #ff6f61; /* Adjust based on Figma */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hero-button:hover {
+    background-color: #e65b50; /* Slightly darker hover effect */
+  }
+  
+  .hero-image {
+    max-width: 60%;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: Adds a rounded effect */
+  }
+  /* App.css */
+
+
+.custom-header {
+  background-color: var(--bg-color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.custom-header h1 {
+  color: var(--text-color);
+  margin: 0;
+}
+
+.custom-search {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.custom-button {
+  background-color: var(--button-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.custom-button:hover {
+  background-color: var(--hover-button-color);
+}
+  

@@ -1,0 +1,103 @@
+
+:root {
+    --primary-color: #dc3545; /* لون الأزرار */
+    --hover-color: #dfded5; /* لون الأزرار عند الـ Hover */
+    --text-color: #ffffff; /* لون النص */
+    --background-color: #f8f9fa; /* لون خلفية البطاقة */
+    --hover-background-color: #e9ecef; /* لون خلفية البطاقة عند الـ Hover */
+  }
+
+.product-card {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 400px !important;
+  }
+  .product-image-container{
+    height: 300px !important;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px) !important;
+  }
+  
+  .product-image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .icon-overlay {
+    position: absolute !important;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .icon-btn {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 50%;
+    padding: 8px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+  
+  .icon-btn:hover {
+    background: rgb(255, 255, 255);
+  }
+  
+  .heart-icon,
+  .eye-icon {
+    color: #c72828 !important;
+    
+    border-radius: 50%;
+    font-size: 25px;
+  }
+  
+  .add-to-cart-btn {
+    width: 100% !important;
+    background-color: #c72828  !important;
+    border: none !important;
+    transition: background-color 0.3s ease !important;
+
+  }
+  .showAll{
+    background-color: #c72828  !important;
+    border: none !important;
+    transition: background-color 0.3s ease;
+
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #e07575 !important;
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .rating {
+    color: #ffc107;
+    font-size: 18px;
+  }
+  
+  .reviews {
+    color: #6c757d;
+    font-size: 14px;
+  }
+  /* تنسيق الصورة الإضافية */
+.additional-image {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }

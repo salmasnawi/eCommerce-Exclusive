@@ -1,0 +1,66 @@
+/* الألوان الأساسية */
+:root {
+    --primary-color: #dc3545; /* لون الأزرار */
+    --hover-color: #dfded5; /* لون الأزرار عند الـ Hover */
+    --text-color: #000000; /* لون النص */
+    --background-color: #f8f9fa; /* لون خلفية البطاقة */
+    --hover-background-color: #e9ecef; /* لون خلفية البطاقة عند الـ Hover */
+  }
+  
+  /* عنوان القسم */
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+color: #000000;  }
+  
+  /* بطاقات التصنيفات */
+  .category-card {
+    transition: all 0.3s ease;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--background-color);
+    width: 150px; /* عرض البطاقة */
+  }
+  
+  .category-card:hover {
+    transform: scale(1.05); /* تكبير البطاقة عند الـ Hover */
+    background-color: var(--hover-color); /* تغيير لون الخلفية */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+  }
+  
+  /* حاوية الأيقونة */
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #e9ecef; /* لون خلفية الأيقونة */
+    border-radius: 50%; /* شكل دائري */
+    margin: 0 auto 10px; /* تباعد من الأسفل */
+  }
+  
+  .category-icon {
+    font-size: 1.5rem; /* حجم الأيقونة */
+    color: var(--primary-color); /* لون الأيقونة */
+  }
+  
+  .category-name {
+    font-size: 0.9rem; /* حجم اسم التصنيف (أصغر) */
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+  }
+  
+  .category-label {
+    font-size: 0.7rem; /* حجم كلمة "Category" (أصغر) */
+    color: #6c757d; /* لون النص الثانوي */
+    margin-bottom: 0;
+    font-style: italic; /* مائل */
+    text-transform: uppercase; /* أحرف كبيرة */
+  }

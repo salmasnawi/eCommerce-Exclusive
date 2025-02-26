@@ -1,0 +1,40 @@
+/* تنسيق شريط البحث */
+.search-bar {
+  width: 50%;
+}
+
+/* تنسيق الأيقونات */
+.icons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icons .nav-link {
+  padding: 0 10px;
+}
+
+/* تنسيق زر البحث */
+.custom-button {
+  border: 1px solid #000;
+  padding: 5px 15px;
+}
+
+.custom-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* تنسيق القائمة */
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* تنسيق صورة المستخدم */
+.dropdown-toggle img {
+  margin-right: 10px;
+}
