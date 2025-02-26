@@ -20,25 +20,26 @@ import AboutUs from "./components/AboutUs/AboutUs";
 function App() {
   return (
     <Provider store={store}>
-      
+
 
       <Router>
-      <NavbarCommunity/>
+        <NavbarCommunity />
 
         <Routes>
-        <Route path="/about" element={<AboutUs/>} />  {/* ✅ About Us Route */}
+          <Route path="/about" element={<AboutUs />} />  {/* ✅ About Us Route */}
 
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/contact" element={<ContactUs/>} /> {/* إضافة المسار */}
+          <Route path="/contact" element={<ContactUs />} /> {/* إضافة المسار */}
 
+          <Route path="*" element={<Navigate to="/" />} /> {/* إعادة التوجيه إلى Home عند مسار غير معروف */}
 
           <Route path="/product/:id" element={<ProductDetails />} /> {/* ✅ إضافة مسار التفاصيل */}
         </Routes>
-        <Footer/>
+        <Footer />
       </Router>
     </Provider>
   );
