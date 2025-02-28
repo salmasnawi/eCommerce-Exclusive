@@ -28,7 +28,7 @@ This project provides a seamless shopping experience, including authentication, 
 - **JSON Server (`db.json`)** - Mock backend for authentication  
 
 ## 🌐 GitHub Pages Deployment
-🔗 **Live Demo**: [Click here]((https://salmasnawi.github.io/eCommerce-Exclusive/))
+🔗 **Live Demo**: [Click here](https://salmasnawi.github.io/eCommerce-Exclusive/)
 
 
 
