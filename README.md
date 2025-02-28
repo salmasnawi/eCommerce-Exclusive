@@ -2,6 +2,7 @@
 🚀 A fully functional and responsive eCommerce website built with React.js, utilizing external APIs for product data and Firebase for authentication.
 This project provides a seamless shopping experience, including authentication, cart management, and a checkout process.
 
+
 🔥 Features
 🏪 Modern & Responsive Design (Figma-inspired)
 🛍️ Product Listing from External API
