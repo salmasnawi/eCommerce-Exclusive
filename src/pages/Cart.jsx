@@ -2,21 +2,27 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateCartItem } from '../store/cartSlice';
 import { Table, Button, Form, Container, Row, Col } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // ✅ استيراد useNavigate
+import { useNavigate } from 'react-router-dom';
 import './Cart.css';
 import Footer from "../components/Footer/Footer";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // ✅ استخدام التنقل
-  const cartItems = useSelector((state) => state.cart.userCarts['currentUserId'] || []);
+  const navigate = useNavigate();
+
+  // ✅ جلب بيانات المستخدم
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const userEmail = currentUser?.email || 'guest'; // ✅ استخدمي "guest" في حالة عدم تسجيل الدخول
+
+  // ✅ جلب السلة الخاصة بالمستخدم الفعلي
+  const cartItems = useSelector((state) => state.cart.userCarts[userEmail] || []);
 
   const handleRemove = (productId) => {
-    dispatch(removeFromCart({ userId: 'currentUserId', productId }));
+    dispatch(removeFromCart({ userId: userEmail, productId }));
   };
 
   const handleUpdateQuantity = (productId, quantity) => {
-    dispatch(updateCartItem({ userId: 'currentUserId', productId, quantity }));
+    dispatch(updateCartItem({ userId: userEmail, productId, quantity }));
   };
 
   const calculateSubtotal = () => {
@@ -79,7 +85,7 @@ const Cart = () => {
                   <p>Total: ${calculateSubtotal()}</p>
                   <Button 
                     variant="dark" 
-                    onClick={() => navigate('/checkout')} // ✅ توجيه المستخدم إلى صفحة الدفع فقط عند الضغط
+                    onClick={() => navigate('/checkout')}
                   >
                     Proceed to Checkout
                   </Button>

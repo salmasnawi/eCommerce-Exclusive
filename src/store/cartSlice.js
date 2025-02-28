@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit"; // ✅ تأكيد الاستيراد الصحيح
+import { createSlice } from "@reduxjs/toolkit"; 
 
 const storedCarts = JSON.parse(localStorage.getItem("userCarts")) || {};
 
 const initialState = {
-  userCarts: storedCarts, // ✅ تحميل السلة من localStorage
+  userCarts: storedCarts, 
 };
 
 const cartSlice = createSlice({
@@ -24,7 +24,7 @@ const cartSlice = createSlice({
       }
 
       localStorage.setItem("userCarts", JSON.stringify(state.userCarts));
-      localStorage.setItem("cart", JSON.stringify(state.userCarts[userId])); // حفظ السلة الحالية فقط
+      localStorage.setItem("cart", JSON.stringify(state.userCarts[userId])); 
     },
 
     removeFromCart: (state, action) => {
@@ -49,8 +49,15 @@ const cartSlice = createSlice({
       localStorage.setItem("userCarts", JSON.stringify(state.userCarts));
       localStorage.setItem("cart", JSON.stringify(state.userCarts[userId] || []));
     },
+
+    // ✅ إصلاح المشكلة بإضافة `setCartFromStorage`
+    setCartFromStorage: (state, action) => {
+      const { userId } = action.payload;
+      const storedCart = JSON.parse(localStorage.getItem("userCarts")) || {};
+      state.userCarts[userId] = storedCart[userId] || [];
+    },
   },
 });
 
-export const { addToCart, removeFromCart, updateCartItem } = cartSlice.actions;
+export const { addToCart, removeFromCart, updateCartItem, setCartFromStorage } = cartSlice.actions;
 export default cartSlice.reducer;

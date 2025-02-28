@@ -35,25 +35,19 @@ const FlashSales = () => {
     ));
   };
 
-  // ✅ دالة لإضافة المنتج إلى السلة
   const handleAddToCart = (product) => {
-    if (!userEmail) {
-      toast.warning('You need to log in first!', { position: 'top-right', autoClose: 3000 });
-      navigate('/login'); // ❌ المستخدم غير مسجل، تحويله لتسجيل الدخول
-      return;
-    }
-
     // ✅ إضافة المنتج إلى Redux
-    dispatch(addToCart({ userId: userEmail, product }));
-
-    // ✅ تحديث localStorage بسلة المستخدم
-    const storedCart = JSON.parse(localStorage.getItem(`cart_${userEmail}`)) || [];
+    dispatch(addToCart({ userId: userEmail || 'guest', product }));
+  
+    // ✅ تحديث localStorage بسلة المستخدم (يتم الحفظ باسم 'guest' إن لم يكن مسجلًا)
+    const cartKey = userEmail ? `cart_${userEmail}` : 'cart_guest';
+    const storedCart = JSON.parse(localStorage.getItem(cartKey)) || [];
     storedCart.push(product);
-    localStorage.setItem(`cart_${userEmail}`, JSON.stringify(storedCart));
-
+    localStorage.setItem(cartKey, JSON.stringify(storedCart));
+  
     toast.success(`${product.title} added to cart!`, { position: 'top-right', autoClose: 3000 });
   };
-
+  
   // 🔹 إعدادات السلايدر
   const sliderSettings = {
     dots: false,

@@ -4,7 +4,7 @@ import { FaHeart, FaEye } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './BestSellingProducts.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../store/authSlice';
+import { addToCart, setCartFromStorage } from '../../store/cartSlice'; // ✅ استخدم cartSlice الصحيح
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -14,16 +14,24 @@ const BestSellingProducts = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // ✅ جلب المستخدم الحالي من Redux
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const userEmail = currentUser?.email;
+
+  // ✅ تحميل السلة من localStorage عند تحميل التطبيق
+  useEffect(() => {
+    if (userEmail) {
+      const storedCart = JSON.parse(localStorage.getItem(`cart_${userEmail}`)) || [];
+      dispatch(setCartFromStorage({ userId: userEmail, cartItems: storedCart }));
+    }
+  }, [userEmail, dispatch]);
+
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((res) => res.json())
       .then((json) => setProducts(json))
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
-
-  // ✅ جلب المستخدم الحالي من Redux
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const userEmail = currentUser?.email;
 
   const displayedProducts = showAll ? products : products.slice(0, 4);
 
@@ -33,15 +41,21 @@ const BestSellingProducts = () => {
       return;
     }
 
-    // ✅ إضافة المنتج إلى Redux
-    dispatch(addToCart({ userId: userEmail, product }));
-
-    // ✅ تحديث localStorage بالعربة المحدثة
+    // ✅ جلب السلة الحالية
     const storedCart = JSON.parse(localStorage.getItem(`cart_${userEmail}`)) || [];
-    storedCart.push(product);
-    localStorage.setItem(`cart_${userEmail}`, JSON.stringify(storedCart));
 
-    toast.success(`Product added to cart!`, { position: 'top-right', autoClose: 3000 });
+    // ✅ التأكد من أن المنتج غير مكرر قبل إضافته
+    if (!storedCart.find(item => item.id === product.id)) {
+      storedCart.push(product);
+      localStorage.setItem(`cart_${userEmail}`, JSON.stringify(storedCart));
+
+      // ✅ إضافة المنتج إلى Redux
+      dispatch(addToCart({ userId: userEmail, product }));
+
+      toast.success(`Product added to cart!`, { position: 'top-right', autoClose: 3000 });
+    } else {
+      toast.info('Product is already in your cart!', { position: 'top-right', autoClose: 2000 });
+    }
   };
 
   return (

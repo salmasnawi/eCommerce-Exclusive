@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { useDispatch } from "react-redux"; // ✅ استيراد useDispatch
-import { logIn } from "../store/authSlice"; // ✅ استيراد دالة تسجيل الدخول
+import { useDispatch } from "react-redux";
+import { logIn } from "../store/authSlice";
 import { Container, Row, Col, Form, Button, Alert } from "react-bootstrap";
 import { FaGoogle } from "react-icons/fa";
+import { auth, googleProvider } from "./firebaseConfig"; // استيراد Firebase Auth
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import "./Login.css";
 import additionalImage2 from "../assets/Side Image.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // ✅ إعداد dispatch
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -28,32 +30,43 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // 🟢 تسجيل الدخول عبر البريد وكلمة المرور
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
     try {
-      const response = await fetch("http://localhost:5000/users");
-      const users = await response.json();
-      const user = users.find(
-        (u) => u.email === formData.email && u.password === formData.password
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
       );
+      const user = userCredential.user;
 
-      if (user) {
-        setSuccess("Login successful!");
-
-        // ✅ تحديث Redux و LocalStorage
-        dispatch(logIn(user));
-        localStorage.setItem("currentUser", JSON.stringify(user));
-
-        setTimeout(() => navigate("/"), 2000);
-      } else {
-        setError("User not found or incorrect credentials.");
-      }
+      setSuccess("Login successful!");
+      dispatch(logIn(user));
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      setTimeout(() => navigate("/"), 2000);
     } catch (error) {
-      console.error("Error:", error);
-      setError("An error occurred. Please try again.");
+      console.error("Firebase Auth Error:", error);
+      setError("Invalid email or password.");
+    }
+  };
+
+  // 🔵 تسجيل الدخول باستخدام Google
+  const handleGoogleLogin = async () => {
+    try {
+      const userCredential = await signInWithPopup(auth, googleProvider);
+      const user = userCredential.user;
+
+      setSuccess("Google login successful!");
+      dispatch(logIn(user));
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      navigate("/");
+    } catch (error) {
+      console.error("Google Auth Error:", error);
+      setError("Google login failed. Please try again.");
     }
   };
 
@@ -75,7 +88,7 @@ const Login = () => {
               <Form.Control
                 type="email"
                 name="email"
-                placeholder="Email or Phone Number"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -97,7 +110,11 @@ const Login = () => {
               Log in
             </Button>
 
-            <Button variant="light" className="w-100 google-login">
+            <Button
+              variant="light"
+              className="w-100 google-login"
+              onClick={handleGoogleLogin}
+            >
               <FaGoogle className="me-2" /> Log in with Google
             </Button>
           </Form>

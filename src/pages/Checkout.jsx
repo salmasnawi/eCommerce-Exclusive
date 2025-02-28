@@ -1,11 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux"; // ✅ استيراد useSelector
+import { useSelector } from "react-redux";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { FaCcVisa, FaCcMastercard, FaPaypal } from "react-icons/fa";
 import "./Checkout.css";
 
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cart.userCarts["currentUserId"] || []); // ✅ جلب المنتجات من Redux
+  // ✅ جلب المستخدم الحالي من Redux
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  const cartItems = useSelector((state) => state.cart.userCarts[currentUser?.email] || []);
 
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
