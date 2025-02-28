@@ -5,10 +5,15 @@ This project provides a seamless shopping experience, including authentication, 
 
 🔥 Features
 🏪 Modern & Responsive Design (Figma-inspired)
+
 🛍️ Product Listing from External API
+
 🔍 Search & Filtering Options
+
 🛒 Shopping Cart with Add/Remove Items
+
 🔑 User Authentication (Firebase Authentication)
+
 💳 Checkout Process
 🎨 Styled with CSS & Bootstrap
 ⚡ Optimized Performance using React.js
